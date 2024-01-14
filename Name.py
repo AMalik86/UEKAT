@@ -19,7 +19,7 @@ image = cv2.resize(image, (700, 400))
 
 # draw the bounding boxes
 for (x, y, w, h) in rects:
-	cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
+    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
 print(f'Found {len(rects)} humans')
 
@@ -31,9 +31,11 @@ cv2.waitKey(0)
 app = Flask(__name__)
 api = Api(app)
 
+
 class HumanDetector(Resource):
     def get(self):
         return {'peoplecount': len(rects)}
+
 
 api.add_resource(HumanDetector, '/')
 
